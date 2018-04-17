@@ -1,7 +1,7 @@
 /*
  * spiDriverMAX.h
  *
- *  Created on: 14 черв. 2016
+ *  Created on: 14 пїЅпїЅпїЅпїЅ. 2016
  *      Author: Mishko
  *      This file contains the structures
  *      and functions for the SPI interface settings
@@ -259,7 +259,7 @@ static inline void spiGyroConfMAX()
 static inline void spiGyroConfL2G2IS()
 {
 	spiWrite(0x0B, 0x03); //power on comand
-	spiWrite(0x0C, 0x80); //config LPF-O for 1 and disable high-pass filter
+	spiWrite(0x0C, 0x00); //config LPF-O for 1 and disable high-pass filter
 	spiWrite(0x0D, 0x00); //disable data RDY signal and enable high-pass filter
 	spiWrite(0x10, 0x00); //orientation config
 	spiWrite(0x1F, 0x08); //set scale 200 dgps

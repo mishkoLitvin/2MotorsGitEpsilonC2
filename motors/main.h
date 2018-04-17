@@ -126,8 +126,8 @@ unsigned int lockDevStepCount = 250;
 
 void zeroStart()
 {
-    motor0.phaseZero = 5.2;
-    motor1.phaseZero = 3.7;
+    motor0.phaseZero = 4.4;
+    motor1.phaseZero = 9.5;
 
     motor0.index = 0;
     motor0.pwmValues.index = 0;
@@ -135,6 +135,7 @@ void zeroStart()
     motor0.phaseTime = motor0.phaseZero;
     motor0.pwmData = getMaxPWMVal(0)*0.8;
     motor0.velocity = 0;
+    motor0.velCorrection = 0;
 
     motor1.index = 1;
     motor1.pwmValues.index = 1;
@@ -144,13 +145,13 @@ void zeroStart()
     motor1.velocity = 0;
 
 
-    motor0.polesCount = 49.53/2.;
-    motor1.polesCount = 49.53/2.;
+	motor0.polesCount = 32.757/2.;
+	motor1.polesCount = 32.757/2.;
 
-    motor0.leftPos = 24.;
-    motor0.rightPos = -24.;
-    motor0.leftPosScan = 24.;
-    motor0.rightPosScan = -24.;
+    motor0.leftPos = 29.;
+    motor0.rightPos = -29.;
+    motor0.leftPosScan = 29.;
+    motor0.rightPosScan = -29.;
 
     pidD[0].Kp = 1.;
     pidD[0].Kd = 0.;
