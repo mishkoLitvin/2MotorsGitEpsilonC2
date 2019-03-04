@@ -106,6 +106,7 @@ extern float dt = 5E-4;
 long mode1cnt, mode3cnt;
 unsigned long timer0cnt = 0, timer1cnt;
 float timeUp, time;
+float velCoef;
 goMode mode = GoZeroMode;
 velMoveMode moveMode = MoveNotDef;
 
@@ -126,8 +127,8 @@ unsigned int lockDevStepCount = 250;
 
 void zeroStart()
 {
-    motor0.phaseZero = 4.4;
-    motor1.phaseZero = 9.5;
+    motor0.phaseZero = 7.2;
+    motor1.phaseZero = 23.0;
 
     motor0.index = 0;
     motor0.pwmValues.index = 0;
@@ -145,13 +146,15 @@ void zeroStart()
     motor1.velocity = 0;
 
 
-	motor0.polesCount = 32.757/2.;
-	motor1.polesCount = 32.757/2.;
+	motor0.polesCount = 49.53/2.;//new ///32.757/2.;//old
+	motor1.polesCount = 49.53/2.;//new ///32.757/2.;//old
 
-    motor0.leftPos = 29.;
-    motor0.rightPos = -29.;
-    motor0.leftPosScan = 29.;
-    motor0.rightPosScan = -29.;
+    motor0.leftPos = 28.;
+    motor0.rightPos = -28.;
+    motor0.leftPosScan = 28.;
+    motor0.rightPosScan = -28.;
+
+    velCoef = 0.05;
 
     pidD[0].Kp = 1.;
     pidD[0].Kd = 0.;
@@ -162,12 +165,12 @@ void zeroStart()
     pidD[1].Ki = 0.;
 
     pidQ[0].Kp = 1.;
-    pidQ[0].Kd = 0.00;
-    pidQ[0].Ki = 0.001;
+    pidQ[0].Kd = 0;
+    pidQ[0].Ki = 0.006;
 
     pidQ[1].Kp = 1.;
-    pidQ[1].Kd = 0.00;
-    pidQ[1].Ki = 0.001;
+    pidQ[1].Kd = 0;
+    pidQ[1].Ki = 0.006;
 
     pidVel[0].Kp = 0.025;
     pidVel[0].Kd = 0.0;
